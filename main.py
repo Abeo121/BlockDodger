@@ -4,6 +4,9 @@ import random
 pygame.font.init()
 pygame.init()
 
+moving_right = False
+moving_left = False
+
 class Player():
     def __init__(self, color):
         self.color =  color 
@@ -21,6 +24,12 @@ class Player():
         if Collided == -1:
             return False
         return True
+    def Move(self, xValue):
+    
+        self.xLoc += xValue
+        
+
+        
         
 
 
@@ -80,9 +89,27 @@ def CheckEvents():
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             run = False
+        elif event.type == pygame.K_RIGHT:
+            moving_right = True
+        
+        elif event.type == pygame.K_LEFT:
+            moving_left = True
+
 
 
     return run
+
+def CheckMovement(Player):
+    
+    print(moving_right)
+
+    print(moving_left)
+    if moving_right:
+        Player.move(5)
+    elif moving_left:
+        Player.move(-5)
+    return Player               
+
     
 
 
@@ -107,6 +134,8 @@ def run(WindowWidth : int, WindowHeight : int ):
 
         StartTime = time.time()
         ShouldRun = CheckEvents()
+       
+        player = CheckMovement(player)
         #pygame.draw.rect(win, (255, 0, 0), (x, y, width, height))
 
     
