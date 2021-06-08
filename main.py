@@ -11,6 +11,7 @@ class Player():
         self.xLoc = 200
         self.yLoc = 500
 
+
     def draw(self, surface):
         self.PlayerObject = pygame.draw.rect(surface, self.color, (  self.xLoc, self.yLoc,
                                                                     25, 25 ))
@@ -137,3 +138,5 @@ def run(WindowWidth : int, WindowHeight : int ):
 
 
 run(400, 600)
+
+
